@@ -1,0 +1,17 @@
+# CPU dataset configurations (small subsets for quick verification)
+
+datasets:
+  - name: gsm8k
+    handler_class: gsm8k
+    num_samples: 50
+    metric: exact_match
+
+  - name: csqa
+    handler_class: csqa
+    num_samples: 50
+    metric: accuracy
+
+  - name: qasc
+    handler_class: qasc
+    num_samples: 50
+    metric: accuracy

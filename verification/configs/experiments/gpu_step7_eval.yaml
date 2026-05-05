@@ -1,0 +1,34 @@
+# GPU Step 7: Full evaluation with TOST equivalence testing
+# Compares p-less against grid-search-optimized baselines
+
+experiment_id: gpu_step7_eval
+environment: gpu
+
+models:
+  - name: Qwen3-8B
+    hf_id: Qwen/Qwen3-8B
+    device: cuda
+  - name: Llama-3.1-8B
+    hf_id: meta-llama/Llama-3.1-8B
+    device: cuda
+
+datasets:
+  - gsm8k
+  - gpqa
+  - humaneval
+  - mbpp
+  - bfcl
+  - csqa
+
+methods:
+  - top_p
+  - top_k
+  - min_p
+  - p_less
+  - p_less_norm
+
+temperatures: [0.3, 0.7, 1.0]
+tost_delta: 0.02  # 2% equivalence margin
+seed: 42
+max_tokens: 512
+search_dir: verification/outputs/results/gpu_search

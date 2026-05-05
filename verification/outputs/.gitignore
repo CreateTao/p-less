@@ -1,0 +1,7 @@
+# Verification framework outputs (not tracked in git)
+results/
+report/
+figures/
+tables/
+*.json
+!configs/**/*.json

@@ -1,0 +1,30 @@
+# GPU Step 6: Hyperparameter grid search
+# Finds optimal params for each baseline on 20% subset
+
+experiment_id: gpu_step6_search
+environment: gpu
+
+models:
+  - name: Qwen3-8B
+    hf_id: Qwen/Qwen3-8B
+    device: cuda
+  - name: Llama-3.1-8B
+    hf_id: meta-llama/Llama-3.1-8B
+    device: cuda
+
+datasets:
+  - gsm8k
+  - humaneval
+  - bfcl
+  - gpqa
+
+methods_to_search:
+  - top_p
+  - top_k
+  - min_p
+  - epsilon
+  - eta
+
+subset_fraction: 0.2
+seed: 42
+max_tokens: 512

@@ -1,0 +1,51 @@
+# CPU Step 2: Quick GSM8K verification with Qwen3-0.6B
+# Goal: Prove p-less accuracy >= framework defaults (Group A)
+
+experiment_id: cpu_step2_gsm8k
+environment: cpu
+
+model:
+  name: Qwen3-0.6B
+  hf_id: Qwen/Qwen3-0.6B
+  size_label: 0.6B
+  memory_estimate_gb: 1.2
+  device: cpu
+
+dataset:
+  name: gsm8k
+  handler_class: gsm8k
+  num_samples: 50
+  metric: exact_match
+
+methods:
+  - name: greedy
+    strategy_class: greedy
+    group: A
+
+  - name: vllm_default
+    strategy_class: temperature_only
+    temperature: 1.0
+    group: A
+
+  - name: hf_default
+    strategy_class: top_k
+    params: {top_k: 50}
+    temperature: 1.0
+    group: A
+
+  - name: top_p_0.9
+    strategy_class: top_p
+    params: {top_p: 0.9}
+    temperature: 0.7
+    group: B
+
+  - name: p_less_t0.7
+    strategy_class: p_less
+    temperature: 0.7
+
+  - name: p_less_t1.0
+    strategy_class: p_less
+    temperature: 1.0
+
+seed: 42
+max_tokens: 256

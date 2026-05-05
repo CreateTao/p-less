@@ -1,0 +1,57 @@
+experiment_id: full_gpu_eval
+environment: gpu
+models:
+  - name: Qwen/Qwen3-8B
+    size: 8B
+  - name: Qwen/Qwen3-14B
+    size: 14B
+  - name: Qwen/Qwen3-32B
+    size: 32B
+  - name: Qwen/Qwen3-235B-A22B  # MoE
+    size: 235B(A22B)
+datasets:
+  - name: gsm8k
+    metric: exact_match
+    num_samples: full
+  - name: gpqa
+    metric: accuracy
+    num_samples: full
+  - name: csqa
+    metric: accuracy
+    num_samples: full
+  - name: qasc
+    metric: accuracy
+    num_samples: full
+  - name: writing_prompts
+    metric: diversity_score
+    num_samples: full
+  - name: bfcl_v3  # Berkeley Function Calling Leaderboard
+    metric: accuracy
+    num_samples: full
+  - name: humaneval
+    metric: pass@1
+    num_samples: full
+  - name: mbpp
+    metric: pass@1
+    num_samples: full
+  - name: livecodebench
+    metric: pass@1
+    num_samples: full
+  - name: mmlu
+    metric: accuracy
+    num_samples: full
+methods:
+  - greedy
+  - top_p_0.9
+  - top_p_0.95
+  - top_k_10
+  - top_k_40
+  - top_k_100
+  - min_p_0.05
+  - epsilon_0.001
+  - eta_0.3
+  - p_less
+  - p_less_norm
+temperatures: [0.0, 0.3, 0.7, 1.0, 1.5, 2.0]
+seeds: [42, 123, 456]
+max_tokens: 512

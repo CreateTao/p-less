@@ -1,0 +1,31 @@
+# GPU model configurations
+models:
+  - name: Qwen3-8B
+    hf_id: Qwen/Qwen3-8B
+    size_label: 8B
+    memory_estimate_gb: 16.0
+    device: cuda
+
+  - name: Qwen3-14B
+    hf_id: Qwen/Qwen3-14B
+    size_label: 14B
+    memory_estimate_gb: 28.0
+    device: cuda
+
+  - name: Qwen3-32B
+    hf_id: Qwen/Qwen3-32B
+    size_label: 32B
+    memory_estimate_gb: 64.0
+    device: cuda
+
+  - name: Llama-3.1-8B
+    hf_id: meta-llama/Llama-3.1-8B
+    size_label: 8B
+    memory_estimate_gb: 16.0
+    device: cuda
+
+  - name: Mistral-7B-v0.3
+    hf_id: mistralai/Mistral-7B-v0.3
+    size_label: 7B
+    memory_estimate_gb: 14.0
+    device: cuda

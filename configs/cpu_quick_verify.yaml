@@ -1,0 +1,32 @@
+experiment_id: cpu_verify_step1
+environment: cpu
+models:
+  - name: Qwen/Qwen3-0.6B
+    size: 0.6B
+    memory_estimate: ~1.2GB
+    feasible_on_cpu: true
+  - name: Qwen/Qwen3-1.7B
+    size: 1.7B
+    memory_estimate: ~3.4GB
+    feasible_on_cpu: true (with 8GB+ RAM)
+  - name: Qwen/Qwen3-4B
+    size: 4B
+    memory_estimate: ~8GB
+    feasible_on_cpu: true (with 16GB+ RAM)
+datasets:
+  - name: gsm8k
+    subset: main
+    num_samples: 50  # subset for quick CPU verification
+    metric: exact_match
+  - name: qasc
+    subset: default
+    num_samples: 50
+    metric: accuracy
+methods:
+  - greedy
+  - top_p_0.9
+  - top_k_40
+  - p_less
+  - p_less_norm
+seed: 42
+max_tokens: 256

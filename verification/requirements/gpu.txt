@@ -1,0 +1,5 @@
+# GPU environment: CPU + evaluation-specific packages
+-r cpu.txt
+accelerate>=0.20.0
+bitsandbytes>=0.40.0
+safetensors>=0.3.0

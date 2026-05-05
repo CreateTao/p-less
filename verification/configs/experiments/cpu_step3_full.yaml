@@ -1,0 +1,77 @@
+# CPU Step 3: Full CPU verification with Qwen3-1.7B
+# Goal: Prove p-less accuracy improvement across multiple datasets
+
+experiment_id: cpu_step3_full
+environment: cpu
+
+model:
+  name: Qwen3-1.7B
+  hf_id: Qwen/Qwen3-1.7B
+  size_label: 1.7B
+  memory_estimate_gb: 3.4
+  device: cpu
+
+dataset:
+  name: gsm8k
+  handler_class: gsm8k
+  num_samples: full
+  metric: exact_match
+
+methods:
+  - name: greedy
+    strategy_class: greedy
+    group: A
+
+  - name: vllm_default
+    strategy_class: temperature_only
+    temperature: 1.0
+    group: A
+
+  - name: hf_default
+    strategy_class: top_k
+    params: {top_k: 50}
+    temperature: 1.0
+    group: A
+
+  - name: top_p_0.9
+    strategy_class: top_p
+    params: {top_p: 0.9}
+    temperature: 0.7
+    group: B
+
+  - name: top_p_0.95
+    strategy_class: top_p
+    params: {top_p: 0.95}
+    temperature: 0.7
+    group: B
+
+  - name: top_k_40
+    strategy_class: top_k
+    params: {top_k: 40}
+    temperature: 0.7
+    group: B
+
+  - name: min_p_0.05
+    strategy_class: min_p
+    params: {min_p: 0.05}
+    temperature: 0.7
+    group: B
+
+  - name: p_less_t0.7
+    strategy_class: p_less
+    temperature: 0.7
+
+  - name: p_less_t1.0
+    strategy_class: p_less
+    temperature: 1.0
+
+  - name: p_less_norm_t0.7
+    strategy_class: p_less_norm
+    temperature: 0.7
+
+  - name: p_less_norm_t1.0
+    strategy_class: p_less_norm
+    temperature: 1.0
+
+seed: 42
+max_tokens: 512

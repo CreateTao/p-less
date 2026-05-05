@@ -1,0 +1,19 @@
+# CPU model configurations
+models:
+  - name: Qwen3-0.6B
+    hf_id: Qwen/Qwen3-0.6B
+    size_label: 0.6B
+    memory_estimate_gb: 1.2
+    device: cpu
+
+  - name: Qwen3-1.7B
+    hf_id: Qwen/Qwen3-1.7B
+    size_label: 1.7B
+    memory_estimate_gb: 3.4
+    device: cpu
+
+  - name: Qwen3-4B
+    hf_id: Qwen/Qwen3-4B
+    size_label: 4B
+    memory_estimate_gb: 8.0
+    device: cpu

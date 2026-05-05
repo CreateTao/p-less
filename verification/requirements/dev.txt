@@ -1,0 +1,5 @@
+# Development dependencies (linting, formatting, Jupyter)
+-r cpu.txt
+ruff>=0.1.0
+ipykernel>=6.0.0
+jupyter>=1.0.0

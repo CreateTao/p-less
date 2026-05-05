@@ -1,0 +1,40 @@
+# GPU method configurations
+# These are used AFTER grid search finds best baseline params.
+# Baseline methods use their grid-search-optimal params.
+# p-less uses multiple temperatures to show temperature-agnostic performance.
+
+methods:
+  # Baseline methods (params will be overridden by grid search results)
+  - name: top_p
+    strategy_class: top_p
+    params: {top_p: 0.9}
+    temperature: 0.7
+
+  - name: top_k
+    strategy_class: top_k
+    params: {top_k: 40}
+    temperature: 0.7
+
+  - name: min_p
+    strategy_class: min_p
+    params: {min_p: 0.05}
+    temperature: 0.7
+
+  - name: epsilon
+    strategy_class: epsilon
+    params: {epsilon: 0.001}
+    temperature: 0.7
+
+  - name: eta
+    strategy_class: eta
+    params: {eta: 0.3}
+    temperature: 0.7
+
+  # p-less: zero hyperparameter
+  - name: p_less
+    strategy_class: p_less
+    temperature: 0.7
+
+  - name: p_less_norm
+    strategy_class: p_less_norm
+    temperature: 0.7

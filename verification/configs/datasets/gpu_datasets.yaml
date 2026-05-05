@@ -1,0 +1,47 @@
+# GPU dataset configurations (full datasets)
+
+datasets:
+  - name: gsm8k
+    handler_class: gsm8k
+    num_samples: full
+    metric: exact_match
+
+  - name: gpqa
+    handler_class: gpqa
+    num_samples: full
+    metric: accuracy
+
+  - name: csqa
+    handler_class: csqa
+    num_samples: full
+    metric: accuracy
+
+  - name: qasc
+    handler_class: qasc
+    num_samples: full
+    metric: accuracy
+
+  - name: humaneval
+    handler_class: humaneval
+    num_samples: full
+    metric: pass@1
+
+  - name: mbpp
+    handler_class: mbpp
+    num_samples: full
+    metric: pass@1
+
+  - name: bfcl
+    handler_class: bfcl
+    num_samples: full
+    metric: accuracy
+
+  - name: writing_prompts
+    handler_class: writing_prompts
+    num_samples: full
+    metric: diversity_score
+
+  - name: mmlu
+    handler_class: mmlu
+    num_samples: full
+    metric: accuracy
