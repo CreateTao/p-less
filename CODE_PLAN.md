@@ -1,5 +1,27 @@
 # P-Less Sampling 测试与验证计划
 
+## 安装部署
+
+```bash
+# 克隆仓库
+git clone <repo-url> && cd p-less
+
+# 按环境选择安装方式：
+# CPU 服务器（仅算法测试 + 小模型验证）
+pip install -e ".[cpu]"
+
+# GPU 服务器（全量评测 + TOST 等价检验）
+pip install -e ".[gpu]"
+
+# 开发环境（lint + jupyter）
+pip install -e ".[dev]"
+```
+
+> **说明**：
+> - `-e` 表示可编辑模式，修改代码后无需重新安装
+> - `pip install -e .` 仅安装基础依赖（torch/numpy/scipy/pyyaml/tqdm），不含模型加载和测试
+> - `verification/requirements/` 下的分层文件仍可使用：`pip install -r verification/requirements/cpu.txt`
+
 ## 问题一：CPU 上能否验证论文结果？
 
 ### 结论：**可以，但有规模限制**
