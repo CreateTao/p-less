@@ -6,7 +6,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 from verification.storage.schema import (
-    SampleResult, AggregatedResult, ComparisonResult,
+    SampleResult, AggregatedResult,
     TOSTResult, GridSearchResult,
 )
 

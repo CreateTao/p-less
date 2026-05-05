@@ -53,22 +53,6 @@ class AggregatedResult:
     seed: int = 42
 
 
-@dataclass
-class ComparisonResult:
-    """Comparison between two methods on the same dataset/model."""
-    schema_version: str = SCHEMA_VERSION
-    method_a: str = ""
-    method_b: str = ""
-    dataset: str = ""
-    model: str = ""
-    temperature_a: float = 1.0
-    temperature_b: float = 1.0
-    paired_t_statistic: float = 0.0
-    paired_t_pvalue: float = 0.0
-    bootstrap_diff_ci_lower: float = 0.0
-    bootstrap_diff_ci_upper: float = 0.0
-    outcome: str = ""  # "Win", "Tie", "Lose"
-
 
 @dataclass
 class TOSTResult:

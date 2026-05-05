@@ -41,7 +41,3 @@ datasets:
     num_samples: full
     metric: diversity_score
 
-  - name: mmlu
-    handler_class: mmlu
-    num_samples: full
-    metric: accuracy

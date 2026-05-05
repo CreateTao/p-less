@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import time
 
 import torch
@@ -27,7 +28,7 @@ class EtaSamplingStrategy(SamplingStrategy):
         top_token_prob = probs.max().item()
 
         # Compute threshold: min(exp(-eta), max_prob)
-        threshold = min(math_exp(-self.eta), top_token_prob)
+        threshold = min(math.exp(-self.eta), top_token_prob)
 
         # Mask tokens below threshold
         mask = probs < threshold
@@ -55,8 +56,3 @@ class EtaSamplingStrategy(SamplingStrategy):
     @property
     def params(self) -> dict:
         return {"eta": self.eta}
-
-
-def math_exp(x: float) -> float:
-    import math
-    return math.exp(x)

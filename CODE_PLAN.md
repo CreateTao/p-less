@@ -168,16 +168,16 @@ model = AutoModelForCausalLM.from_pretrained(
 #### Step 2：CPU 小模型验证（Qwen3-0.6B，4-6 小时）
 
 ```bash
-# 运行命令
-python run_benchmark.py \
-  --model Qwen/Qwen3-0.6B \
-  --device cpu \
-  --datasets gsm8k csqa \
-  --methods greedy top_p_0.9 top_k_40 p_less p_less_norm \
-  --num_samples 50 \
-  --seed 42 \
-  --output results/cpu_step2/
+# GSM8K 50题快速验证
+python verification/scripts/run_cpu_benchmark.py \
+  --config verification/configs/experiments/cpu_step2_gsm8k.yaml
+
+# 如需 CSQA 验证，需创建单独的 YAML 配置文件
+# （CPU benchmark 每次运行仅支持一个数据集）
 ```
+
+> **说明**：CPU benchmark 采用 YAML 配置驱动，所有参数（模型、数据集、方法、样本数）均在配置文件中定义。
+> 如需对其他数据集（如 CSQA）运行，需参照 `cpu_step2_gsm8k.yaml` 创建新配置。
 
 验证目标：
 - p-less 在 GSM8K 上 Accuracy ≥ greedy（与原论文趋势一致）
@@ -187,70 +187,91 @@ python run_benchmark.py \
 #### Step 3：CPU 中模型验证（Qwen3-1.7B，8-12 小时）
 
 ```bash
-python run_benchmark.py \
-  --model Qwen/Qwen3-1.7B \
-  --device cpu \
-  --datasets gsm8k qasc humaneval \
-  --methods greedy top_p_0.9 top_k_40 min_p_0.05 p_less p_less_norm \
-  --num_samples full \
-  --seed 42 \
-  --output results/cpu_step3/
+python verification/scripts/run_cpu_benchmark.py \
+  --config verification/configs/experiments/cpu_step3_full.yaml
 ```
 
 新增验证：
 - HumanEval Pass@1 对比（代码精确性）
 - 引入 min-p 对照（同为相对阈值方法，但需调参）
 
-#### Step 4：GPU 全量评测（核心实验，2-3 天）
+#### Step 4：GPU 超参搜索（20%子集，找 baseline 最优参数）
 
-按优先级逐数据集运行：
+先在 20% 数据子集上对每种 baseline 方法（top-p、top-k、min-p、epsilon、eta）进行网格搜索，
+找到各自的最优超参数，供 Step 5 全量评测使用。
+
+```bash
+python verification/scripts/run_gpu_search.py \
+  --model Qwen/Qwen3-8B \
+  --datasets gsm8k humaneval bfcl gpqa \
+  --methods top_p top_k min_p epsilon eta \
+  --subset-fraction 0.2 \
+  --results-dir verification/outputs/results/gpu_search
+```
+
+> **说明**：搜索结果保存为 `grid_search_*.json`，后续 Step 5 会自动加载最优参数。
+> 可选参数：`--methods`（默认搜索 top_p/top_k/min_p/epsilon/eta）、`--subset-fraction`（默认 0.2）。
+
+#### Step 5：GPU 全量评测 + TOST 等价检验（核心实验）
+
+使用 Step 4 搜索到的最优 baseline 参数，在全量数据集上运行评测，
+并对 p-less vs 各 baseline 做 TOST 等价检验（δ=2%）。
 
 ```bash
 # P0 数据集
-for MODEL in Qwen3-8B Llama-3.1-8B Mistral-7B-v0.3; do
-  for DATASET in gsm8k gpqa humaneval mbpp bfcl_v3 mmlu; do
-    python run_benchmark.py \
-      --model $MODEL --device cuda \
-      --datasets $DATASET \
-      --methods greedy top_p_0.9 top_p_0.95 top_k_40 min_p_0.05 epsilon_0.001 p_less p_less_norm \
-      --temperatures 0.3 0.7 1.0 \
-      --seeds 42 123 456 \
-      --num_samples full
-  done
-done
+python verification/scripts/run_gpu_evaluation.py \
+  --model Qwen/Qwen3-8B \
+  --datasets gsm8k gpqa humaneval mbpp bfcl csqa \
+  --methods top_p top_k min_p p_less p_less_norm \
+  --temperatures 0.3 0.7 1.0 \
+  --search-dir verification/outputs/results/gpu_search \
+  --results-dir verification/outputs/results/gpu_eval
 
-# P1 数据集
-for DATASET in csqa qasc humaneval_plus livecodebench writing_prompts bfcl_v3_multi mmlu_pro; do
-  ...
-done
+# 如需对其他模型运行
+python verification/scripts/run_gpu_evaluation.py \
+  --model meta-llama/Llama-3.1-8B \
+  --datasets gsm8k gpqa humaneval mbpp bfcl csqa
 ```
 
-#### Step 5：温度兼容性专项实验
+> **说明**：
+> - `--search-dir` 指向 Step 4 的搜索结果，脚本会自动加载各 baseline 的最优参数
+> - `--temperatures` 同时覆盖了温度兼容性测试（见下方说明）
+> - p-less 在所有指定温度下评测；baseline 仅在其最优温度下评测
+
+**温度兼容性测试**（原 Step 5 专项实验，现已合并）：
 
 ```bash
-python run_temperature_study.py \
-  --model Qwen3-8B \
-  --dataset gsm8k \
-  --methods top_p_0.9 top_k_40 p_less p_less_norm \
+# 扩展温度范围进行温度兼容性验证
+python verification/scripts/run_gpu_evaluation.py \
+  --model Qwen/Qwen3-8B \
+  --datasets gsm8k \
+  --methods top_p top_k min_p p_less p_less_norm \
   --temperatures 0.01 0.1 0.3 0.7 1.0 1.5 2.0 3.0 \
-  --output results/temperature_study/
+  --search-dir verification/outputs/results/gpu_search \
+  --results-dir verification/outputs/results/gpu_temperature
 ```
 
 输出：
-- 各方法 Accuracy-vs-Temperature 曲线图
-- 各方法 候选集平均大小-vs-Temperature 曲线图
+- 各方法 Accuracy-vs-Temperature 数据（通过 `run_analysis.py` 生成曲线图）
+- 各方法 候选集平均大小-vs-Temperature 数据
 - p-less 阈值分布统计（均值、方差、min、max）
 
 #### Step 6：统计分析与论文级报告
 
-```python
-# 对每组 (model, dataset) 做：
-1. 配对 t 检验 / McNemar 检验：p-less vs 各 baseline
-2. Bootstrap 95% CI：各方法 Accuracy 置信区间
-3. Win/Tie/Lose 计数表：p-less 在多少配置下 Win
-4. 效果量 (Cohen's d)：量化 p-less 优势大小
-5. 效率分析：平均 token 数 / 生成速度
+```bash
+python verification/scripts/run_analysis.py \
+  --results-dir verification/outputs/results/gpu_eval \
+  --search-dir verification/outputs/results/gpu_search \
+  --output-dir verification/outputs/report
 ```
+
+分析内容：
+1. Accuracy 对比表（Group A: 框架默认配置，Group B: 推荐配置）
+2. Bootstrap 95% CI：各方法 Accuracy 置信区间
+3. 配对 t 检验 / Wilcoxon 检验：p-less vs 各 baseline
+4. Win/Tie/Lose 计数表：p-less 在多少配置下 Win
+5. TOST 等价检验汇总：p-less 与 baseline 是否等价（δ=2%）
+6. 温度鲁棒性曲线图
 
 ---
 
@@ -300,8 +321,8 @@ python run_temperature_study.py \
 | Step 1: 算法正确性 | 1-2 小时 | 纯代码 | 单元测试通过报告 |
 | Step 2: CPU 小模型 | 4-6 小时 | CPU | GSM8K/CSQA 初步对比 |
 | Step 3: CPU 中模型 | 8-12 小时 | CPU | HumanEval 初步结果 |
-| Step 4: GPU 全量评测 | 2-3 天 | GPU | 核心实验完整结果 |
-| Step 5: 温度专项 | 4-6 小时 | GPU | 温度兼容性曲线 |
+| Step 4: GPU 超参搜索 | 4-6 小时 | GPU | 各 baseline 最优参数 |
+| Step 5: GPU 全量评测 + 温度 | 2-3 天 | GPU | 核心实验结果 + 温度曲线 |
 | Step 6: 统计分析 | 4-6 小时 | 代码 | 论文级报告 + 图表 |
 | **总计** | **~4-5 天** | | |
 
@@ -340,17 +361,25 @@ python verification/scripts/run_cpu_benchmark.py \
 python verification/scripts/run_cpu_benchmark.py \
   --config verification/configs/experiments/cpu_step3_full.yaml
 
-# Step 6: GPU 超参搜索（20%子集找baseline最优参数）
+# Step 4: GPU 超参搜索（20%子集找baseline最优参数）
 python verification/scripts/run_gpu_search.py \
   --model Qwen/Qwen3-8B \
   --datasets gsm8k humaneval bfcl gpqa
 
-# Step 7: GPU 全量评测 + TOST等价检验
+# Step 5: GPU 全量评测 + TOST等价检验
 python verification/scripts/run_gpu_evaluation.py \
   --model Qwen/Qwen3-8B \
-  --datasets gsm8k gpqa humaneval mbpp bfcl csqa
+  --datasets gsm8k gpqa humaneval mbpp bfcl csqa \
+  --search-dir verification/outputs/results/gpu_search
 
-# 统计分析 + 报告生成
+# Step 5 扩展: 温度兼容性验证
+python verification/scripts/run_gpu_evaluation.py \
+  --model Qwen/Qwen3-8B \
+  --datasets gsm8k \
+  --temperatures 0.01 0.1 0.3 0.7 1.0 1.5 2.0 3.0 \
+  --search-dir verification/outputs/results/gpu_search
+
+# Step 6: 统计分析 + 报告生成
 python verification/scripts/run_analysis.py \
   --results-dir verification/outputs/results/gpu_eval \
   --search-dir verification/outputs/results/gpu_search
