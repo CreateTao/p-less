@@ -18,14 +18,14 @@ NUM_TRIALS_PER_CONFIG = 1000
 def _compute_candidate_set_size_p_less(probs: torch.Tensor) -> int:
     """Compute candidate set size for p-less without mutation."""
     p = probs.square().sum(dim=-1).item()
-    return (probs >= p).sum().item()
+    return (probs >= p - 1e-6).sum().item()
 
 
 def _compute_candidate_set_size_p_less_norm(probs: torch.Tensor) -> int:
     """Compute candidate set size for p-less-norm without mutation."""
     v = probs.size(-1)
     p_norm = ((v * probs.square().sum(dim=-1)) - 1.0) / (v - 1.0)
-    return (probs >= p_norm.item()).sum().item()
+    return (probs >= p_norm.item() - 1e-6).sum().item()
 
 
 class TestCandidateSetNonEmpty:

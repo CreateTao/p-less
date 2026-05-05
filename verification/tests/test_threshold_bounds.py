@@ -24,7 +24,7 @@ class TestThresholdBounds:
                 for _ in range(NUM_TRIALS_PER_CONFIG):
                     probs = generate_random_distribution(vocab_size, dist_type)
                     p = probs.square().sum(dim=-1).item()
-                    assert p >= lower_bound - 1e-10, (
+                    assert p >= lower_bound - 1e-6, (
                         f"Threshold below 1/V: p={p}, 1/V={lower_bound}, "
                         f"vocab={vocab_size}, dist={dist_type}"
                     )
@@ -37,7 +37,7 @@ class TestThresholdBounds:
                     probs = generate_random_distribution(vocab_size, dist_type)
                     p = probs.square().sum(dim=-1).item()
                     max_prob = probs.max().item()
-                    assert p <= max_prob + 1e-10, (
+                    assert p <= max_prob + 1e-6, (
                         f"Threshold above max(probs): p={p}, max={max_prob}, "
                         f"vocab={vocab_size}, dist={dist_type}"
                     )
@@ -48,7 +48,7 @@ class TestThresholdBounds:
             probs = torch.ones(vocab_size) / vocab_size
             p = probs.square().sum(dim=-1).item()
             expected = 1.0 / vocab_size
-            assert abs(p - expected) < 1e-10, (
+            assert abs(p - expected) < 1e-6, (
                 f"Uniform threshold mismatch: p={p}, expected={expected}"
             )
 

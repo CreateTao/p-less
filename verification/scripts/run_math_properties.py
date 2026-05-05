@@ -14,9 +14,9 @@ def main():
     )
 
     if result.returncode == 0:
-        print("\n✅ All math property tests PASSED")
+        print("\n[PASS] All math property tests PASSED")
     else:
-        print("\n❌ Some math property tests FAILED - check output above")
+        print("\n[FAIL] Some math property tests FAILED - check output above")
 
     return result.returncode
 
