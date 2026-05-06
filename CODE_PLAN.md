@@ -379,12 +379,15 @@ python verification/scripts/run_analysis.py \
 - 所有方法均达到 256 token 上限（max_tokens 限制），模型倾向于生成较长的推理链
 - 修复：`run_cpu_benchmark.py` 断点续跑 bug（已有结果应加载而非跳过导致除零错误）
 
-### Step 3：CPU 中模型验证（Qwen3-1.7B）🔄 执行中
+### Step 3：CPU 中模型验证（Qwen3-1.7B, GSM8K 100题）🔄 执行中
 
-- 目标：全量 GSM8K（1319题），验证 p-less 与原论文趋势是否一致
+- 目标：GSM8K 100题子集（全量1319题需~370h，暂用100题验证趋势）
 - 对比方法：greedy / vllm_default / hf_default / top_p(0.9, 0.95) / top_k(40) / min_p(0.05) / p_less / p_less_norm
 - max_tokens: 512（相比 Step 2 的 256 翻倍，允许更完整推理链）
 - 配置：`verification/configs/experiments/cpu_step3_full.yaml`
+- 模型来源：ModelScope（自动下载）
+- 预计时间：~28小时（CPU）
+- GPU 可大幅加速：单卡 T4/A10 约 1-2 小时，A100 约 30-40 分钟
 
 ### Step 3.5：CPU MoE 模型验证（Qwen3-30B-A3B）⏳ 待执行
 
