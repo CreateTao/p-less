@@ -379,7 +379,7 @@ python verification/scripts/run_analysis.py \
 - 所有方法均达到 256 token 上限（max_tokens 限制），模型倾向于生成较长的推理链
 - 修复：`run_cpu_benchmark.py` 断点续跑 bug（已有结果应加载而非跳过导致除零错误）
 
-### Step 3：CPU 中模型验证（Qwen3-1.7B, GSM8K 100题）🔄 执行中
+### Step 3：CPU 中模型验证（Qwen3-1.7B, GSM8K 100题）🔄 执行中（中途终止，待迁移 GPU 继续）
 
 - 目标：GSM8K 100题子集（全量1319题需~370h，暂用100题验证趋势）
 - 对比方法：greedy / vllm_default / hf_default / top_p(0.9, 0.95) / top_k(40) / min_p(0.05) / p_less / p_less_norm
@@ -388,6 +388,32 @@ python verification/scripts/run_analysis.py \
 - 模型来源：ModelScope（自动下载）
 - 预计时间：~28小时（CPU）
 - GPU 可大幅加速：单卡 T4/A10 约 1-2 小时，A100 约 30-40 分钟
+
+**执行进度（2026-05-06）：**
+
+| 方法 | 完成题数 / 100 | 状态 |
+|---|---|---|
+| greedy | 16 / 100 | 🔄 中途中断 |
+| vllm_default | 0 / 100 | ⏳ 未开始 |
+| hf_default | 0 / 100 | ⏳ 未开始 |
+| top_p_0.9 | 0 / 100 | ⏳ 未开始 |
+| top_p_0.95 | 0 / 100 | ⏳ 未开始 |
+| top_k_40 | 0 / 100 | ⏳ 未开始 |
+| min_p_0.05 | 0 / 100 | ⏳ 未开始 |
+| p_less_t0.7 | 0 / 100 | ⏳ 未开始 |
+| p_less_t1.0 | 0 / 100 | ⏳ 未开始 |
+| p_less_norm_t0.7 | 0 / 100 | ⏳ 未开始 |
+| p_less_norm_t1.0 | 0 / 100 | ⏳ 未开始 |
+
+**已有结果：**
+- `verification/outputs/results/cpu/gsm8k/Qwen3-1.7B/greedy/t1.0/` — 16 个 JSON 文件（q_0000 ~ q_0015）
+- 脚本支持断点续跑，已有结果会被加载跳过
+
+**GPU 迁移注意事项：**
+- 当前结果存储路径为 `verification/outputs/results/cpu/gsm8k/Qwen3-1.7B/`，GPU 上运行时需确认路径一致或做适配
+- 模型在 CPU 上通过 ModelScope 下载，GPU 服务器需重新下载或从 HuggingFace 加载
+- 建议在 GPU 服务器上直接运行同一命令，脚本的断点续跑功能会跳过已完成的 greedy 前 16 题
+- 如需从 greedy 第 17 题继续，确保 `verification/outputs/results/cpu/gsm8k/Qwen3-1.7B/` 目录已完整迁移到 GPU 服务器
 
 ### Step 3.5：CPU MoE 模型验证（Qwen3-30B-A3B）⏳ 待执行
 
