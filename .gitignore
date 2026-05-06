@@ -21,6 +21,9 @@ build/
 venv/
 env/
 
+# Model cache (large files, downloaded on demand)
+model_cache/
+
 # Verification outputs — results are tracked, reports/figures/tables are not
 verification/outputs/report/
 verification/outputs/figures/

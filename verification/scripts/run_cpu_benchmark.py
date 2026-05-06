@@ -113,10 +113,19 @@ def main():
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     for model_cfg in config.models:
-        print(f"\nLoading model: {model_cfg.hf_id} on {model_cfg.device}")
-        tokenizer = AutoTokenizer.from_pretrained(model_cfg.hf_id)
+        # Resolve model path: check local cache first, fallback to HuggingFace download
+        hf_id = model_cfg.hf_id
+        local_path = os.path.join("model_cache", hf_id.replace("/", os.sep))
+        if os.path.isdir(local_path):
+            model_path = local_path
+            print(f"\nLoading model from local cache: {model_path}")
+        else:
+            model_path = hf_id
+            print(f"\nLoading model from HuggingFace: {model_path}")
+
+        tokenizer = AutoTokenizer.from_pretrained(model_path)
         model = AutoModelForCausalLM.from_pretrained(
-            model_cfg.hf_id,
+            model_path,
             use_cache=True,
             device_map=model_cfg.device,
             dtype=torch.float32,
