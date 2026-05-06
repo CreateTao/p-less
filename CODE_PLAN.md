@@ -379,7 +379,45 @@ python verification/scripts/run_analysis.py \
 - 所有方法均达到 256 token 上限（max_tokens 限制），模型倾向于生成较长的推理链
 - 修复：`run_cpu_benchmark.py` 断点续跑 bug（已有结果应加载而非跳过导致除零错误）
 
-### Step 3：CPU 中模型验证（Qwen3-1.7B）⏳ 未开始
+### Step 3：CPU 中模型验证（Qwen3-1.7B）🔄 执行中
+
+- 目标：全量 GSM8K（1319题），验证 p-less 与原论文趋势是否一致
+- 对比方法：greedy / vllm_default / hf_default / top_p(0.9, 0.95) / top_k(40) / min_p(0.05) / p_less / p_less_norm
+- max_tokens: 512（相比 Step 2 的 256 翻倍，允许更完整推理链）
+- 配置：`verification/configs/experiments/cpu_step3_full.yaml`
+
+### Step 3.5：CPU MoE 模型验证（Qwen3-30B-A3B）⏳ 待执行
+
+> **说明**：MoE 模型验证的特殊性在于专家路由机制可能导致多峰分布，这对 p-less 采样行为有独特影响。
+
+**模型信息：**
+- HuggingFace ID: `Qwen/Qwen3-30B-A3B`
+- 总参数: ~30B，激活参数: ~3B（32 experts, 4 active per token）
+- 架构：Mixture-of-Experts，`Qwen3MoeForCausalLM`
+
+**CPU 可行性分析：**
+| 量化方式 | 模型大小 | 内存需求 | 推理速度 | 可行性 |
+|---|---|---|---|---|
+| FP32 | ~120 GB | ~128 GB | ~3-5 tok/s | ❌ 不可行 |
+| FP16/BF16 | ~60 GB | ~64 GB | ~5-8 tok/s | ❌ 内存不足 |
+| INT4 (bitsandbytes NF4) | ~18 GB | ~24 GB | ~1-3 tok/s | ⚠️ 需 GPU+CPU offload，较慢 |
+| GGUF Q4_K_M (llama.cpp) | ~17 GB | ~20 GB | ~8-12 tok/s | ✅ 推荐，但需改用 llama.cpp |
+
+**验证目标：**
+1. p-less 在 MoE 模型上的阈值分布是否有别于 dense 模型（多峰分布假设）
+2. p-less 候选集大小是否大于 dense 模型同参数量级
+3. p-less 在 MoE 模型上 Accuracy ≥ greedy（与 dense 模型趋势一致）
+4. MoE 专家路由对采样分布的影响分析
+
+**待解决的技术问题：**
+- 当前验证框架基于 transformers + AutoModelForCausalLM，bitsandbytes 4-bit 量化对 MoE 模型兼容性不稳定
+- 推荐方案：使用 GGUF 量化 + llama.cpp 推理，但需改造 GenerationEngine
+- 备选方案：使用 bitsandbytes NF4 量化 + device_map="auto" CPU offload（需 GPU，推理慢）
+
+**执行策略：**
+- 优先使用 GPU 服务器（如有）以 bitsandbytes 4-bit 加载
+- 如纯 CPU 环境，需等待 GGUF/llama.cpp 适配或足够内存的机器
+- 可先在 Step 5 (GPU 全量评测) 中一并测试
 
 ### Step 4：GPU 超参搜索 ⏳ 未开始
 

@@ -14,7 +14,7 @@ model:
 dataset:
   name: gsm8k
   handler_class: gsm8k
-  num_samples: full
+  num_samples: 0
   metric: exact_match
 
 methods:
