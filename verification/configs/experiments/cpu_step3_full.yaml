@@ -1,5 +1,7 @@
-# CPU Step 3: Full CPU verification with Qwen3-1.7B
-# Goal: Prove p-less accuracy improvement across multiple datasets
+# CPU Step 3: CPU verification with Qwen3-1.7B
+# Goal: Prove p-less accuracy improvement with larger model
+# Note: Full 1319 questions would take ~370h on CPU, so we use 100-question subset.
+#       Set num_samples to 0 for full dataset (GPU recommended).
 
 experiment_id: cpu_step3_full
 environment: cpu
@@ -14,7 +16,7 @@ model:
 dataset:
   name: gsm8k
   handler_class: gsm8k
-  num_samples: 0
+  num_samples: 100
   metric: exact_match
 
 methods:

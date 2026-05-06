@@ -113,15 +113,25 @@ def main():
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     for model_cfg in config.models:
-        # Resolve model path: check local cache first, fallback to HuggingFace download
+        # Resolve model path: local cache -> ModelScope -> HuggingFace
         hf_id = model_cfg.hf_id
         local_path = os.path.join("model_cache", hf_id.replace("/", os.sep))
         if os.path.isdir(local_path):
             model_path = local_path
             print(f"\nLoading model from local cache: {model_path}")
         else:
+            # Try ModelScope first (faster in China), fallback to HuggingFace
             model_path = hf_id
-            print(f"\nLoading model from HuggingFace: {model_path}")
+            try:
+                from modelscope import snapshot_download
+                ms_id = hf_id  # ModelScope uses same ID format
+                ms_cache = snapshot_download(ms_id)
+                model_path = ms_cache
+                print(f"\nLoading model from ModelScope: {ms_id}")
+            except (ImportError, Exception) as e:
+                print(f"\nLoading model from HuggingFace: {model_path}")
+                if isinstance(e, ImportError):
+                    print("  (Install modelscope for faster download: pip install modelscope)")
 
         tokenizer = AutoTokenizer.from_pretrained(model_path)
         model = AutoModelForCausalLM.from_pretrained(
