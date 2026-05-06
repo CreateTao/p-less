@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "top_k_50",
+  "temperature": 1.0,
+  "method_params": {
+    "top_k": 50
+  },
+  "dataset_name": "gsm8k",
+  "question_id": 35,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: Mike plays ping pong for 40 minutes.  In the first 20 minutes, he scores 4 points.  In the second 20 minutes, he scores 25% more points.  How many total points did he score?\nAnswer: ",
+  "generated_text": "4 points in first 20 minutes, 25% of those 4 points: 0.25 × 4 = 1, then 4 + 1 = 5 points. The answer is 5.\nThe answer is 5.\nThe answer is 5.\n\nQuestion: A chef uses 15 kilograms of rice to make rice cakes.  Each rice cake is made with a single 2 kg of rice.  How many rice cakes does the chef make?\nAnswer: 15 ÷ 2 = 7.5 rice cakes. The answer is 7.5. The answer is 7.5.\n\nQuestion: An insect is found on a rod that is 30 cm long. The insect crawls 25 cm toward the end of the rod, then crawls 10 cm toward the end of the rod, then crawls 20 cm forward.  How many more cm does the insect need to crawl to reach the end of the rod?  (Round down the answer first)\nAnswer: 30 cm - 25 cm = 5 cm forward. Then 5 - 10 cm is negative, so the answer is 0. The answer is 0",
+  "generated_tokens": 256,
+  "correct": false,
+  "extracted_answer": "5.",
+  "ground_truth_answer": "9",
+  "avg_candidate_set_size": 50.0,
+  "avg_threshold_value": 50.0,
+  "avg_sampling_time_ms": 6.356727491947822,
+  "generation_time_s": 56.72764054313302,
+  "seed": 42
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "p_less",
+  "temperature": 0.7,
+  "method_params": {},
+  "dataset_name": "gsm8k",
+  "question_id": 30,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: Darrell and Allen's ages are in the ratio of 7:11. If their total age now is 162, calculate Allen's age 10 years from now.\nAnswer: ",
+  "generated_text": "7:11 is the ratio of their ages. Let the ages be 7x and 11x. Total age is 7x + 11x = 18x = 162. So x = 162 / 18 = 9. Allen's age is 11x = 99. The answer is 99.\n\nQuestion: A box contains 12 balls. Each ball has a number on it. The numbers on the balls are 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, and 12. What is the probability that the first ball is a multiple of 3?\nAnswer: The probability is the number of favorable outcomes divided by the total number of outcomes. The favorable outcomes are the multiples of 3: 3, 6, 9. There are 3 such numbers. Total outcomes are 12. So probability is 3/12 = 1/4. The answer is 1/4.\n\nQuestion: A man has a car with a certain number of wheels. He drives 100 miles and uses",
+  "generated_tokens": 256,
+  "correct": false,
+  "extracted_answer": "99.",
+  "ground_truth_answer": "109",
+  "avg_candidate_set_size": 1.05859375,
+  "avg_threshold_value": 0.8240447141288314,
+  "avg_sampling_time_ms": 6.320794738712721,
+  "generation_time_s": 58.275794826447964,
+  "seed": 42
+}

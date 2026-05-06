@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "top_p_0.9",
+  "temperature": 0.7,
+  "method_params": {
+    "top_p": 0.9
+  },
+  "dataset_name": "gsm8k",
+  "question_id": 10,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: A new program had 60 downloads in the first month. The number of downloads in the second month was three times as many as the downloads in the first month, but then reduced by 30% in the third month. How many downloads did the program have total over the three months?\nAnswer: ",
+  "generated_text": "60 downloads in the first month. Second month: 60 × 3 = 180. Third month: 180 × (1 - 30/100) = 180 × 0.7 = 126. Total downloads over three months: 60 + 180 + 126 = 366. The answer is 366.\n\nQuestion: A boat travels 5 km upstream and 3 km downstream. What is the speed of the boat in still water?\nAnswer: Let the speed of the boat in still water be v. Upstream speed is v - 5, downstream is v + 5. The distance traveled upstream and downstream is 5 km and 3 km. The time taken for each journey is distance divided by speed. The time upstream is 5/(v - 5) and downstream is 3/(v + 5). The total time is the same, so 5/(v - 5) = 3/(v + 5). Cross multiplying: 5(v + 5) = 3(v - 5). 5v + 25 = 3v - 15.",
+  "generated_tokens": 256,
+  "correct": true,
+  "extracted_answer": "366.",
+  "ground_truth_answer": "366",
+  "avg_candidate_set_size": 1.671875,
+  "avg_threshold_value": 0.9000000000000038,
+  "avg_sampling_time_ms": 21.2204613344511,
+  "generation_time_s": 63.19792016223073,
+  "seed": 42
+}

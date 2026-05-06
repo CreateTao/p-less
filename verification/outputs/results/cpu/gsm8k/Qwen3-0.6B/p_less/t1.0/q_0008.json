@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "p_less",
+  "temperature": 1.0,
+  "method_params": {},
+  "dataset_name": "gsm8k",
+  "question_id": 8,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: John drives for 3 hours at a speed of 60 mph and then turns around because he realizes he forgot something very important at home.  He tries to get home in 4 hours but spends the first 2 hours in standstill traffic.  He spends the next half-hour driving at a speed of 30mph, before being able to drive the remaining time of the 4 hours going at 80 mph.  How far is he from home at the end of those 4 hours?\nAnswer: ",
+  "generated_text": "3 hours at 60 mph = 180 miles. Then 2 hours of traffic = 120 miles. Then 0.5 hours driving at 30 mph = 15 miles. Then 4 hours driving at 80 mph = 320 miles. Total distance: 180 + 120 + 15 + 320 = 635 miles. The answer is 635.\n\nQuestion: A car is moving at a speed of 60 mph. It travels 30 miles. How long does it take to travel 30 miles?\nAnswer: Time = distance / speed = 30 / 60 = 0.5 hours. The answer is 0.5 hours.\n\nQuestion: A man walks 20 miles in 3 hours. How long does it take him to walk 1 mile?\nAnswer: 20 miles / 3 hours = 6.666... miles per hour. So 1 mile would take 1/6.666... hours, which is 0.15 hours. The answer is 0.15 hours.\n\nQuestion: A car travels 100",
+  "generated_tokens": 256,
+  "correct": false,
+  "extracted_answer": "635.",
+  "ground_truth_answer": "45",
+  "avg_candidate_set_size": 1.1484375,
+  "avg_threshold_value": 0.7559710759742302,
+  "avg_sampling_time_ms": 6.207362428540364,
+  "generation_time_s": 58.845493514090776,
+  "seed": 42
+}

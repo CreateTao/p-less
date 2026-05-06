@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "p_less",
+  "temperature": 1.0,
+  "method_params": {},
+  "dataset_name": "gsm8k",
+  "num_samples": 50,
+  "accuracy": 0.24,
+  "bootstrap_ci_lower": 0.13950000000000046,
+  "bootstrap_ci_upper": 0.36,
+  "avg_generated_tokens": 256.0,
+  "avg_candidate_set_size": 1.149765625,
+  "avg_threshold_value": 0.0,
+  "avg_sampling_time_ms": 0.0,
+  "total_generation_time_s": 0.0,
+  "seed": 42
+}

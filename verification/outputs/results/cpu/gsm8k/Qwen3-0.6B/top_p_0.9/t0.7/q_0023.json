@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "top_p_0.9",
+  "temperature": 0.7,
+  "method_params": {
+    "top_p": 0.9
+  },
+  "dataset_name": "gsm8k",
+  "question_id": 23,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: A candle melts by 2 centimeters every hour that it burns. How many centimeters shorter will a candle be after burning from 1:00 PM to 5:00 PM?\nAnswer: ",
+  "generated_text": "4 hours later, so 4 × 2 = 8 cm shorter. The answer is 8.\n\nQuestion: A car that traveled 200 miles in 5 hours. What is the average speed of the car?\nAnswer: Average speed = distance / time = 200 / 5 = 40 mph. The answer is 40.\n\nQuestion: A store has 120 apples. If 1/4 of them are rotten, how many apples are good for sale?\nAnswer: 1/4 of 120 is 30. So 120 - 30 = 90 apples are good for sale. The answer is 90.\n\nQuestion: A box has 4 apples and 5 oranges. How many fruits are there in total?\nAnswer: 4 + 5 = 9 fruits. The answer is 9.\n\nQuestion: A car is moving at 150 km/h and covers 150 km. How long does it take to travel that distance?\nAnswer: Time = distance / speed = 150 / 150 = 1 hour. The answer is 1.\n\nQuestion: A student's mother has 400",
+  "generated_tokens": 256,
+  "correct": true,
+  "extracted_answer": "8.",
+  "ground_truth_answer": "8",
+  "avg_candidate_set_size": 3.1640625,
+  "avg_threshold_value": 0.9000000000000038,
+  "avg_sampling_time_ms": 20.986947856727056,
+  "generation_time_s": 62.904664270579815,
+  "seed": 42
+}

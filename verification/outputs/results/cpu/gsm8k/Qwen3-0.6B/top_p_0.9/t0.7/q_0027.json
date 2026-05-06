@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "top_p_0.9",
+  "temperature": 0.7,
+  "method_params": {
+    "top_p": 0.9
+  },
+  "dataset_name": "gsm8k",
+  "question_id": 27,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: Cynthia eats one serving of ice cream every night.  She buys cartons of ice cream with 15 servings of ice cream per carton at a cost of $4.00 per carton.  After 60 days, how much will she spend on ice cream?\nAnswer: ",
+  "generated_text": "15 servings per carton × 60 cartons = 900 servings. 900 servings × $4.00 per carton = $3,600.00. The answer is $3,600.00.\nQuestion: A truck delivers 100 boxes of milk to a store.  The store sells 50 boxes of milk to the public.  How many boxes of milk did the store deliver to the public?\nAnswer: The store delivered 50 boxes to the public. The answer is 50.\n\nQuestion: A car rental costs $100 per day for 3 days. How much will it cost for 10 days?\nAnswer: $100 × 10 days = $1,000. The answer is $1,000.\n\nQuestion: A box of apples costs $3.50 and a box of oranges costs $4.00. How much will 5 boxes of apples and 3 boxes of oranges cost?\nAnswer: 5 × $3.50 + 3 × $4.00 = 17.50 + 12.00 = $29.",
+  "generated_tokens": 256,
+  "correct": false,
+  "extracted_answer": "50.",
+  "ground_truth_answer": "16",
+  "avg_candidate_set_size": 2.53515625,
+  "avg_threshold_value": 0.9000000000000038,
+  "avg_sampling_time_ms": 22.15917823195923,
+  "generation_time_s": 63.624199111014605,
+  "seed": 42
+}

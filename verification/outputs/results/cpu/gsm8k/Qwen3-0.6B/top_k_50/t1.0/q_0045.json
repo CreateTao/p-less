@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "top_k_50",
+  "temperature": 1.0,
+  "method_params": {
+    "top_k": 50
+  },
+  "dataset_name": "gsm8k",
+  "question_id": 45,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: Meredith is a freelance blogger who writes about health topics and submits to clients each day as her permanent job. A blog article takes an average of 4 hours to research and write about. Last week, she wrote 5 articles on Monday and  2/5 times more articles on Tuesday than on Monday. On Wednesday, she wrote twice the number of articles she wrote on Tuesday. Calculate the total number of hours she spent writing articles in the three days.\nAnswer: ",
+  "generated_text": "5 articles on Monday. She wrote 2/5 times more on Tuesday. 2/5 of 5 is 2. So she wrote 2 articles on Tuesday. Wednesday, twice the number on Tuesday, so 4 articles. Total: 5 + 2 + 4 = 11 articles. \nTotal hours: 11 articles × 4 hours = 44 hours. The answer is 44.\n\nQuestion: A student wrote 120 words on an assignment. He wants to keep his work to 50% of the words as done. If he already wrote 180 words, how many more words does he have to write?\nAnswer: The total words he wants to do is 100% × 50% = 50%. He wrote 180 + 120 = 300 words. 50% of 300 is 150. So he needs to write 150 words. The answer is 150.\n\nQuestion: There are 344 trees in the park. 90% of the trees are under the old trees. How many trees are under the old trees?\nAnswer: ",
+  "generated_tokens": 256,
+  "correct": false,
+  "extracted_answer": "44.",
+  "ground_truth_answer": "104",
+  "avg_candidate_set_size": 50.0,
+  "avg_threshold_value": 50.0,
+  "avg_sampling_time_ms": 6.292982536251657,
+  "generation_time_s": 57.751159720122814,
+  "seed": 42
+}

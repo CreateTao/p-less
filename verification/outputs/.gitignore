@@ -1,7 +1,4 @@
-# Verification framework outputs (not tracked in git)
-results/
+# Verification framework outputs — results are tracked, others are not
 report/
 figures/
 tables/
-*.json
-!configs/**/*.json

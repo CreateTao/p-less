@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "top_k_50",
+  "temperature": 1.0,
+  "method_params": {
+    "top_k": 50
+  },
+  "dataset_name": "gsm8k",
+  "question_id": 12,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: Carlos is planting a lemon tree. The tree will cost $90 to plant. Each year it will grow 7 lemons, which he can sell for $1.5 each. It costs $3 a year to water and feed the tree. How many years will it take before he starts earning money on the lemon tree?\nAnswer: ",
+  "generated_text": "1 year: He sells 1 lemon at 1.5, so 1.5. He has 90 - 3 = 87 left. But how? He plants the tree, takes 3 dollars to water and feed. So after planting 1 lemon, he needs to pay 3? No, wait: The cost to plant is 90. That's the initial outlay. Then he eats the 90 first, then adds 3 each year. So in the first year, he sells 1 lemon, but he needs to have money from 90 already. So maybe the calculation is: cost to plant is 90. Let's say he spends 90, then each year he spends 3. So the total is 90 - 3. So that's 87. So he can sell one lemon. That would earn 1.5. He has 87 left. But maybe the question is how many years until he starts earning money. If he eats the first 90 and then spends 3 every year, then after 1 year he has 90 - 3 = 87 left. So he starts earning money in the first year. So",
+  "generated_tokens": 256,
+  "correct": false,
+  "extracted_answer": "87",
+  "ground_truth_answer": "13",
+  "avg_candidate_set_size": 50.0,
+  "avg_threshold_value": 50.0,
+  "avg_sampling_time_ms": 6.534115542308427,
+  "generation_time_s": 58.4857946485281,
+  "seed": 42
+}

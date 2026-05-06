@@ -361,21 +361,22 @@ python verification/scripts/run_analysis.py \
 - 结果：5个测试文件全部通过，float32精度容差已修正
 - Commit：`55c1982 Fix Step 1 test tolerances for float32 precision and GBK encoding`
 
-### Step 2：CPU 小模型验证（Qwen3-0.6B, GSM8K 50题）🔄 执行中
+### Step 2：CPU 小模型验证（Qwen3-0.6B, GSM8K 50题）✅ 完成
 
-| 方法 | 完成题数 | 目标题数 | 状态 |
-|---|---|---|---|
-| greedy | 50 | 50 | ✅ 完成 |
-| temperature_1.0 (vllm_default) | 50 | 50 | ✅ 完成 |
-| top_k_50 (hf_default) | 50 | 50 | ✅ 完成 |
-| top_p_0.9 | 20 | 50 | ❌ 中断，待继续 |
-| p_less_t0.7 | 0 | 50 | ❌ 未开始 |
-| p_less_t1.0 | 0 | 50 | ❌ 未开始 |
+| 方法 | Accuracy | 95% CI | Avg Candidate Set | 状态 |
+|---|---|---|---|---|
+| greedy | 0.20 | [0.10, 0.32] | 1.0 | ✅ |
+| temperature_1.0 (vllm_default) | 0.22 | [0.12, 0.34] | 151936.0 | ✅ |
+| top_k_50 (hf_default) | 0.22 | [0.12, 0.34] | 50.0 | ✅ |
+| top_p_0.9 | 0.16 | [0.08, 0.28] | 2.3 | ✅ |
+| p_less_t0.7 | **0.24** | [0.14, 0.36] | 1.1 | ✅ |
+| p_less_t1.0 | **0.24** | [0.14, 0.36] | 1.1 | ✅ |
 
-- 已有聚合结果：
-  - greedy: Accuracy=0.20, CI=[0.08, 0.32]
-  - temperature_1.0: Accuracy=0.22, CI=[0.12, 0.34]
-  - top_k_50: Accuracy=0.22, CI=[0.12, 0.34]
+- 执行时间：2026-05-06
+- 核心发现：p-less 在 GSM8K 上 Accuracy=0.24 ≥ greedy(0.20)，与论文趋势一致
+- p-less 平均候选集大小仅 1.1，说明 0.6B 模型分布高度集中，截断非常保守
+- top_p_0.9 在此小模型上表现最差(0.16)，可能因为截断过于激进
+- 所有方法均达到 256 token 上限（max_tokens 限制），模型倾向于生成较长的推理链
 - 修复：`run_cpu_benchmark.py` 断点续跑 bug（已有结果应加载而非跳过导致除零错误）
 
 ### Step 3：CPU 中模型验证（Qwen3-1.7B）⏳ 未开始

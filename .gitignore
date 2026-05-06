@@ -21,8 +21,7 @@ build/
 venv/
 env/
 
-# Verification outputs (not tracked)
-verification/outputs/results/
+# Verification outputs — results are tracked, reports/figures/tables are not
 verification/outputs/report/
 verification/outputs/figures/
 verification/outputs/tables/

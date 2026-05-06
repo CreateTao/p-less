@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "temperature_1.0",
+  "temperature": 1.0,
+  "method_params": {
+    "temperature": 1.0
+  },
+  "dataset_name": "gsm8k",
+  "question_id": 46,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: Candice put 80 post-it notes in her purse before she headed out to her job at the coffee shop.  On her way, she stopped off at the store and purchased a package of Post-it notes;  At work, she placed a single Post-it note on each of 220 different cups of coffee.  If she had 23 post-it notes remaining overall, how many Post-it notes were in the package that she purchased?\nAnswer: ",
+  "generated_text": "80 + 23 = 103 post-it notes.  The number of Post-it notes in the package is 103 - 80 = 23. The answer is 23.\n\nQuestion: A man carried a сум of 13 rubles, paid for two different machines that cost 27 and 13 rubles each.   How much did he pay in total?\nAnswer: 27 + 13 = 40. The answer is 40.\n\nQuestion: There were 42 students in a class.  5 students took marks before reporting it.  How many students were left after the marks were reported?\nAnswer: 42 - 5 = 37 students. The answer is 37.\n\nQuestion: A man bought a stationery item for 36 rubles.  He returned it for 5 rubles.  How much does the man really pay for the item?\nAnswer: 36 - 5 = 31 rubles. The answer is 31.\n\nQuestion: One kilogram of apples costs 9.5 rubles. How much does it cost for a kilogram of apples if the price is 15",
+  "generated_tokens": 256,
+  "correct": false,
+  "extracted_answer": "23.",
+  "ground_truth_answer": "163",
+  "avg_candidate_set_size": 151936.0,
+  "avg_threshold_value": 0.0,
+  "avg_sampling_time_ms": 6.9760487822350115,
+  "generation_time_s": 57.785954143851995,
+  "seed": 42
+}

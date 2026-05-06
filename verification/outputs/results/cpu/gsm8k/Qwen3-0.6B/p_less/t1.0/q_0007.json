@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "p_less",
+  "temperature": 1.0,
+  "method_params": {},
+  "dataset_name": "gsm8k",
+  "question_id": 7,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: Carla is downloading a 200 GB file. Normally she can download 2 GB/minute, but 40% of the way through the download, Windows forces a restart to install updates, which takes 20 minutes. Then Carla has to restart the download from the beginning. How load does it take to download the file?\nAnswer: ",
+  "generated_text": "200 GB is the total size. Normally, 2 GB per minute. So the time to download 200 GB normally would be 200 / 2 = 100 minutes. But after the restart, she has to start from the beginning again. So the time is 100 + 20 + 20 = 140 minutes. The answer is 140.\n\nQuestion: A person has a certain amount of money. They buy a book for $10 and a notebook for $5. How much money did they have initially?\nAnswer: The total cost is $10 + $5 = $15. So they had $15 initially. The answer is $15.\n\nQuestion: A man is walking in a park. He walks 100 meters per hour. He walks for 3 hours. How many meters does he walk in total?\nAnswer: 100 meters/hour × 3 hours = 300 meters. The answer is 300.\n\nQuestion: A man has a certain amount of money. He spends $100 on a movie ticket and $50 on a drink. He has $20 left. How",
+  "generated_tokens": 256,
+  "correct": false,
+  "extracted_answer": "140.",
+  "ground_truth_answer": "160",
+  "avg_candidate_set_size": 1.34765625,
+  "avg_threshold_value": 0.6609143574169138,
+  "avg_sampling_time_ms": 6.267845106776804,
+  "generation_time_s": 59.70558325573802,
+  "seed": 42
+}

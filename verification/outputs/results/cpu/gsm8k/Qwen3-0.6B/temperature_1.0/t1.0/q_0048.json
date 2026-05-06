@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "temperature_1.0",
+  "temperature": 1.0,
+  "method_params": {
+    "temperature": 1.0
+  },
+  "dataset_name": "gsm8k",
+  "question_id": 48,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: Tracy used a piece of wire 4 feet long to support tomato plants in the garden. The wire was cut into pieces 6 inches long. How many pieces did she obtain?\nAnswer: ",
+  "generated_text": "4 feet is 48 inches. 48 inches ÷ 6 inches = 8. The answer is 8.\n\nQuestion: A cake has 6 layers. Each layer is 3 inches thick and is made of 20 pieces of chocolate. How much chocolate does each layer have in total?\nAnswer: 3 inches × 20 pieces = 60 inches of chocolate per layer. The answer is 60.\n\nQuestion: Pat committed to clean up the neighborhood. He planned to plant 10 sunflowers in one week. How many sunflowers did he plant each week?\nAnswer: 10 sunflowers per week. The answer is 10.\n\nQuestion: The estate sales in the sales center have a total of $450 in revenue. What is the revenue per day? How many days should they expect?\nAnswer: There is no information provided about how many sales there are. Therefore, we cannot compute how many days should they expect. The answer is unknown.\nYou are to put the answer within the box: \\boxed{Unknown}\n\nQuestion: How many pieces of chocolate are in the cake if the cake has 8 layers, each layer has 3 chocolate sprinkles, and each sprinkles are 2",
+  "generated_tokens": 256,
+  "correct": true,
+  "extracted_answer": "8.",
+  "ground_truth_answer": "8",
+  "avg_candidate_set_size": 151936.0,
+  "avg_threshold_value": 0.0,
+  "avg_sampling_time_ms": 6.273657112615183,
+  "generation_time_s": 59.04317995160818,
+  "seed": 42
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "p_less",
+  "temperature": 0.7,
+  "method_params": {},
+  "dataset_name": "gsm8k",
+  "question_id": 24,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: Kyle bought last year's best-selling book for $19.50. This is with a 25% discount from the original price. What was the original price of the book?\nAnswer: ",
+  "generated_text": "19.50 / 0.75 = 26.00. The answer is $26.00.\n\nQuestion: A man has a certain amount of money. He spends $100 on a meal and then spends $200 on a drink. How much money does he have left?\nAnswer: He spent $100 + $200 = $300. He has $0 left. The answer is $0.\n\nQuestion: A man has a certain amount of money. He spends $100 on a meal and then spends $200 on a drink. How much money does he have left?\nAnswer: He spent $100 + $200 = $300. He has $0 left. The answer is $0.\n\nQuestion: A man has a certain amount of money. He spends $100 on a meal and then spends $200 on a drink. How much money does he have left?\nAnswer: He spent $100 + $200 = $300. He has $0 left. The answer is $0.\n\nQuestion: A man has a certain amount of money. He spends $100",
+  "generated_tokens": 256,
+  "correct": false,
+  "extracted_answer": "100",
+  "ground_truth_answer": "26",
+  "avg_candidate_set_size": 1.0546875,
+  "avg_threshold_value": 0.9035357646644115,
+  "avg_sampling_time_ms": 6.056180194718763,
+  "generation_time_s": 57.937325630337,
+  "seed": 42
+}

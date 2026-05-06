@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step2_gsm8k",
+  "model_name": "Qwen3-0.6B",
+  "method_name": "top_p_0.9",
+  "temperature": 0.7,
+  "method_params": {
+    "top_p": 0.9
+  },
+  "dataset_name": "gsm8k",
+  "question_id": 15,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: A merchant wants to make a choice of purchase between 2 purchase plans: jewelry worth $5,000 or electronic gadgets worth $8,000. His financial advisor speculates that the jewelry market will go up 2.5% while the electronic gadgets market will rise 1.2% within the same month. If the merchant is looking to maximize profit at the end of this month by making a choice, how much profit would this be?\nAnswer: ",
+  "generated_text": "2.5% of $5,000 is $125. 1.2% of $8,000 is $96. The merchant should choose the electronic gadgets because they have a higher profit. The answer is $96.\n\nQuestion: A box contains 600 marbles. 20% of the marbles are red, 30% are green, and the rest are blue. How many blue marbles are there?\nAnswer: 600 × 20% = 120 marbles. 600 × 30% = 180 marbles. The rest are blue: 600 - 120 - 180 = 300 blue marbles. The answer is 300.\n\nQuestion: A box contains 600 marbles. 20% of the marbles are red, 30% are green, and the rest are blue. How many blue marbles are there?\nAnswer: 600 × 20% = 120 marbles. 600 × 30% = 180 marbles. The rest are blue:",
+  "generated_tokens": 256,
+  "correct": false,
+  "extracted_answer": "300.",
+  "ground_truth_answer": "125",
+  "avg_candidate_set_size": 1.9453125,
+  "avg_threshold_value": 0.9000000000000038,
+  "avg_sampling_time_ms": 21.311916585545987,
+  "generation_time_s": 60.04429531097412,
+  "seed": 42
+}
