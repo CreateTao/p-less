@@ -34,6 +34,9 @@ class GenerationEngine:
         self.max_tokens = max_tokens
         self.seed = seed
         self.record_metrics = record_metrics
+        # Handle both single and multiple EOS token IDs
+        eos = tokenizer.eos_token_id
+        self.eos_token_ids = set(eos if isinstance(eos, list) else [eos])
 
     def generate(self, prompt: str) -> GenerationResult:
         """Generate a single completion from a prompt."""
@@ -65,7 +68,7 @@ class GenerationEngine:
                 if self.record_metrics:
                     strategy.accumulate_metrics()
 
-                if token_id == self.tokenizer.eos_token_id:
+                if token_id in self.eos_token_ids:
                     break
 
                 past_key_values = output.past_key_values

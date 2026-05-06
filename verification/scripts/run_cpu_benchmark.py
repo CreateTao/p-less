@@ -33,20 +33,25 @@ def run_single_benchmark(
     )
 
     items = dataset_handler.load()
+    if config.dataset.num_samples > 0:
+        items = items[:config.dataset.num_samples]
     results = []
+    model_name = config.models[0].name if config.models else "unknown"
 
     for item in items:
         # Skip if result already exists (resume support)
         result_path = os.path.join(
             results_dir, dataset_handler.dataset_name,
-            config.models[0].name if config.models else "unknown",
+            model_name,
             strategy.name, f"t{strategy.temperature}",
             f"q_{item.question_id:04d}.json",
         )
         if os.path.exists(result_path):
+            with open(result_path, "r", encoding="utf-8") as f:
+                results.append(SampleResult(**json.load(f)))
             continue
 
-        prompt = dataset_handler.format_prompt(item, config.models[0].name if config.models else "")
+        prompt = dataset_handler.format_prompt(item, model_name)
         gen_result = engine.generate(prompt)
 
         extracted_answer = dataset_handler.extract_answer(gen_result.generated_text, item)
@@ -60,7 +65,7 @@ def run_single_benchmark(
 
         sample_result = SampleResult(
             experiment_id=config.experiment_id,
-            model_name=config.models[0].name if config.models else "",
+            model_name=model_name,
             method_name=strategy.name,
             temperature=strategy.temperature,
             method_params=strategy.params,
@@ -113,7 +118,8 @@ def main():
         model = AutoModelForCausalLM.from_pretrained(
             model_cfg.hf_id,
             use_cache=True,
-            device_map="auto",
+            device_map=model_cfg.device,
+            dtype=torch.float32,
         )
 
         # Run each method

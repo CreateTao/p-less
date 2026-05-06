@@ -350,6 +350,44 @@ python verification/scripts/run_analysis.py \
 
 ---
 
+## 验证执行进度
+
+> **更新时间：2026-05-06** — 每次执行验证后更新此表，便于中断后恢复。
+
+### Step 1：算法正确性单元测试 ✅ 完成
+
+- 状态：已完成并通过
+- 执行时间：2026-05-05
+- 结果：5个测试文件全部通过，float32精度容差已修正
+- Commit：`55c1982 Fix Step 1 test tolerances for float32 precision and GBK encoding`
+
+### Step 2：CPU 小模型验证（Qwen3-0.6B, GSM8K 50题）🔄 执行中
+
+| 方法 | 完成题数 | 目标题数 | 状态 |
+|---|---|---|---|
+| greedy | 50 | 50 | ✅ 完成 |
+| temperature_1.0 (vllm_default) | 50 | 50 | ✅ 完成 |
+| top_k_50 (hf_default) | 50 | 50 | ✅ 完成 |
+| top_p_0.9 | 20 | 50 | ❌ 中断，待继续 |
+| p_less_t0.7 | 0 | 50 | ❌ 未开始 |
+| p_less_t1.0 | 0 | 50 | ❌ 未开始 |
+
+- 已有聚合结果：
+  - greedy: Accuracy=0.20, CI=[0.08, 0.32]
+  - temperature_1.0: Accuracy=0.22, CI=[0.12, 0.34]
+  - top_k_50: Accuracy=0.22, CI=[0.12, 0.34]
+- 修复：`run_cpu_benchmark.py` 断点续跑 bug（已有结果应加载而非跳过导致除零错误）
+
+### Step 3：CPU 中模型验证（Qwen3-1.7B）⏳ 未开始
+
+### Step 4：GPU 超参搜索 ⏳ 未开始
+
+### Step 5：GPU 全量评测 + TOST等价检验 ⏳ 未开始
+
+### Step 6：统计分析与论文级报告 ⏳ 未开始
+
+---
+
 ## 代码框架实现状态
 
 ### 已完成（63 文件）

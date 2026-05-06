@@ -6,7 +6,7 @@ environment: cpu
 
 model:
   name: Qwen3-0.6B
-  hf_id: Qwen/Qwen3-0.6B
+  hf_id: /workspace/p-less/model_cache/Qwen/Qwen3-0.6B
   size_label: 0.6B
   memory_estimate_gb: 1.2
   device: cpu
