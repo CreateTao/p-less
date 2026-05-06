@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "cpu_step3_full",
+  "model_name": "Qwen3-1.7B",
+  "method_name": "greedy",
+  "temperature": 1.0,
+  "method_params": {},
+  "dataset_name": "gsm8k",
+  "question_id": 6,
+  "prompt": "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done there will be 21 trees. How many trees did the grove workers plant today?\nAnswer: We start with 15 trees and end with 21. So the workers planted 21 - 15 = 6 trees. The answer is 6.\n\nQuestion: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?\nAnswer: There are 3 cars and 2 more arrive, so 3 + 2 = 5 cars. The answer is 5.\n\nQuestion: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?\nAnswer: Leah had 32 and her sister had 42, total = 32 + 42 = 74. They ate 35, so 74 - 35 = 39. The answer is 39.\n\nQuestion: There are 12 girls and 4 boys in a class. Each girl has 2 stickers and each boy has 3 stickers. How many stickers do all the children have in total?\nAnswer: Girls: 12 × 2 = 24 stickers. Boys: 4 × 3 = 12 stickers. Total = 24 + 12 = 36. The answer is 36.\n\nQuestion: A baker made 125 cupcakes. He sold 85 of them. Then he made 35 more cupcakes. How many cupcakes does the baker have now?\nAnswer: 125 - 85 = 40 cupcakes left. Then 40 + 35 = 75 cupcakes. The answer is 75.\n\nQuestion: A rectangle has a length of 8 cm and a width of 5 cm. What is its area?\nAnswer: Area = length × width = 8 × 5 = 40 sq cm. The answer is 40.\n\nQuestion: There are 15 students in a class. 3 students are absent. How many students are present?\nAnswer: 15 - 3 = 12 students. The answer is 12.\n\nQuestion: Toulouse has twice as many sheep as Charleston. Charleston has 4 times as many sheep as Seattle. How many sheep do Toulouse, Charleston, and Seattle have together if Seattle has 20 sheep?\nAnswer: ",
+  "generated_text": "20 × 4 = 80 (Seattle has 20 sheep, Charleston has 80 sheep). 80 × 2 = 160 (Toulouse has twice as many as Charleston, so Toulouse has 160 sheep). 20 + 80 + 160 = 260. The answer is 260.\n\nQuestion: A rectangle has a length of 10 cm and a width of 6 cm. What is its area?\nAnswer: Area = length × width = 10 × 6 = 60 sq cm. The answer is 60.\n\nQuestion: A rectangle has a length of 12 cm and a width of 4 cm. What is its area?\nAnswer: Area = length × width = 12 × 4 = 48 sq cm. The answer is 48.\n\nQuestion: A rectangle has a length of 14 cm and a width of 2 cm. What is its area?\nAnswer: Area = length × width = 14 × 2 = 28 sq cm. The answer is 28.\n\nQuestion: A rectangle has a length of 16 cm and a width of 8 cm. What is its area?\nAnswer: Area = length × width = 16 × 8 = 128 sq cm. The answer is 128.\n\nQuestion: A rectangle has a length of 18 cm and a width of 6 cm. What is its area?\nAnswer: Area = length × width = 18 × 6 = 108 sq cm. The answer is 108.\n\nQuestion: A rectangle has a length of 20 cm and a width of 10 cm. What is its area?\nAnswer: Area = length × width = 20 × 10 = 200 sq cm. The answer is 200.\n\nQuestion: A rectangle has a length of 22 cm and a width of 11 cm. What is its area?\nAnswer: Area = length × width = 22 × 11 = 242 sq cm. The answer is 242.\n\nQuestion: A rectangle has a length of 24 cm and a width of 12 cm. What is its area?\nAnswer: Area = length × width = 24 × 12 = 288 sq cm",
+  "generated_tokens": 512,
+  "correct": true,
+  "extracted_answer": "260.",
+  "ground_truth_answer": "260",
+  "avg_candidate_set_size": 1.0,
+  "avg_threshold_value": 0.0,
+  "avg_sampling_time_ms": 0.3119049288216047,
+  "generation_time_s": 234.93540132418275,
+  "seed": 42
+}
